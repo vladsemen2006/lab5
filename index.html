@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мой Планировщик</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Форма регистрации -->
+      <div id="auth-section">
+        <h2>Регистрация / Вход</h2>
+        <form id="auth-form">
+          <input
+            type="text"
+            id="username"
+            placeholder="Придумайте ник"
+            required
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Придумайте пароль"
+            required
+          />
+          <div class="button-group">
+            <button type="submit" id="register-btn">Зарегистрироваться</button>
+            <button type="button" id="login-btn">Войти</button>
+          </div>
+          <p id="auth-message"></p>
+        </form>
+      </div>
+
+      <!-- Основное приложение (скрыто до входа) -->
+      <div id="app-section" class="hidden">
+        <header>
+          <h1>Мой Планировщик</h1>
+          <p id="welcome-message"></p>
+          <button id="logout-btn">Выйти</button>
+        </header>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="new">Новая задача</button>
+          <button class="tab-btn" data-tab="active">Активные задачи</button>
+          <button class="tab-btn" data-tab="completed">Выполненные</button>
+        </div>
+
+        <!-- Форма добавления задачи -->
+        <div id="new-task-tab" class="tab-content active">
+          <h2>Добавить новую задачу</h2>
+          <form id="task-form">
+            <input
+              type="text"
+              id="task-title"
+              placeholder="Название задачи"
+              required
+            />
+            <textarea
+              id="task-description"
+              placeholder="Описание задачи"
+            ></textarea>
+            <input
+              type="text"
+              id="task-tags"
+              placeholder="Теги (через запятую)"
+            />
+            <button type="submit">Добавить задачу</button>
+          </form>
+        </div>
+
+        <!-- Список активных задач -->
+        <div id="active-task-tab" class="tab-content">
+          <h2>Активные задачи</h2>
+          <div id="active-tasks-list"></div>
+        </div>
+
+        <!-- Список выполненных задач -->
+        <div id="completed-task-tab" class="tab-content">
+          <h2>Выполненные задачи</h2>
+          <div id="completed-tasks-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для редактирования -->
+    <div id="edit-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Редактировать задачу</h2>
+        <form id="edit-form">
+          <input type="text" id="edit-title" required />
+          <textarea id="edit-description"></textarea>
+          <input type="text" id="edit-tags" />
+          <div class="modal-buttons">
+            <button type="submit">Сохранить</button>
+            <button type="button" id="cancel-edit">Отмена</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
